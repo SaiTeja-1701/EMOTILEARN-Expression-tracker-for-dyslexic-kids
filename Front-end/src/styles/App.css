@@ -1,0 +1,269 @@
+/* General App Styles */
+
+.App {
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* Ensures the height remains fixed to the viewport height */
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Ensures padding doesn't increase the height/width */
+    overflow: hidden;
+    /* Prevents scrollbars due to child components spilling over */
+}
+
+
+/* Start Screen Styles */
+
+.start-screen {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+    color: #333;
+}
+
+.start-screen h1 {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+/* Admin Login Styles */
+
+.admin-login {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+
+/* Play and Admin Button Styles */
+
+.play-button,
+.admin-button {
+    margin: 10px auto;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.play-button:hover,
+.admin-button:hover {
+    background-color: #388e3c;
+}
+
+
+/* Landing Page Styles */
+
+.landing-page {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Navbar Styles */
+
+.landing-navbar {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.landing-navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.landing-navbar a:hover {
+    color: #4caf50;
+}
+
+
+/* Hero Section Styles */
+
+.hero-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    /* Remove underline from link */
+    display: inline-block;
+    /* Ensure it behaves like a button */
+}
+
+.hero-button:visited {
+    color: white;
+    /* Ensure visited link color remains the same */
+}
+
+.hero-button:hover {
+    background-color: #388e3c;
+}
+
+
+/* Horizontal Chart Styles */
+
+.horizontal-charts {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+}
+
+.chart {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 30px;
+}
+
+
+/* Ensure Content Visibility */
+
+.container {
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.element {
+    position: relative;
+    height: auto;
+    max-height: 100%;
+}
+
+
+/* // App.css */
+
+.quiz {
+    background: rgba(255, 255, 255, 0.9);
+    /* Light background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    max-width: 500px;
+    width: 90%;
+    margin: 30px auto;
+    text-align: center;
+    color: #333;
+}
+
+.quiz h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #4caf50;
+}
+
+.timer {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.next-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #388e3c;
+}

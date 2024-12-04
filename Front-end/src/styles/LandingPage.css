@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    color: #56fa04;
+}
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    color: white;
+    transition: all 0.4s ease-in-out;
+}
+
+.animated-title {
+    animation: fadeInDown 1.2s ease-in-out;
+}
+
+.cta-btn {
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-section {
+    padding: 50px;
+    background-color: #f4f4f4;
+    text-align: center;
+}

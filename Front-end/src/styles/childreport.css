@@ -1,0 +1,228 @@
+/* Ensure the body has a clean and readable layout */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling caused by overflowing elements */
+}
+
+
+/* Main container */
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 100%;
+    /* Ensure the container spans the entire width */
+    font-family: Arial, sans-serif;
+    /* overflow-y: auto; */
+    /* Enable scrolling if content exceeds viewport height */
+    max-height: 100px;
+    /* Full viewport height */
+    box-sizing: border-box;
+    /* Padding included in dimensions */
+    position: sticky;
+    /* Makes the table header sticky */
+    top: 0;
+    /* Sticks the header to the top of the table container */
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Heading styling */
+
+h1 {
+    text-align: center;
+    color: #00796b;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+/* Chart cards layout */
+
+#chart-cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* Ensure content wraps for smaller screens */
+    justify-content: center;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Dynamic width for responsiveness */
+    box-sizing: border-box;
+    overflow-x: auto;
+    /* position: sticky; */
+    /* Makes the table header sticky */
+    top: 0;
+    /* Sticks the header to the top of the table container */
+    z-index: 2;
+    /* Enable horizontal scrolling if necessary */
+}
+
+#chart-cards img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* Sticky selection bar */
+
+
+/* 
+div {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+} */
+
+
+/* Table styling */
+
+.table-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    max-height: 500px;
+    /* Set a fixed height for scrolling */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    /* Ensure table stretches to container width */
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    /* Prevent content wrapping */
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+    position: sticky;
+    top: 0;
+    /* Keeps the header visible when scrolling */
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* Buttons */
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+    .table-container {
+        max-height: 400px;
+    }
+    button {
+        width: 100%;
+    }
+    #chart-cards {
+        flex-direction: column;
+        /* Stack items vertically for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 18px;
+    }
+    .table-container {
+        max-height: 350px;
+    }
+    button {
+        font-size: 12px;
+    }
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.selection-bar {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #ddd;
+}
+
+.charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between charts */
+    margin-top: 20px;
+    /* Ensure separation from the selection bar */
+    padding: 10px;
+}
+
+.bar-chart {
+    width: 100%;
+    /* Make the chart responsive */
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: small;
+    /* Center align */
+}
