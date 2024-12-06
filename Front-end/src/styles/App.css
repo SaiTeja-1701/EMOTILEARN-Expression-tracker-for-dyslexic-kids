@@ -267,3 +267,10 @@ button:hover {
 .next-button:hover {
     background-color: #388e3c;
 }
+
+
+/* Add this in src/styles/App.css */
+
+.navbar {
+    margin-bottom: 20px;
+}

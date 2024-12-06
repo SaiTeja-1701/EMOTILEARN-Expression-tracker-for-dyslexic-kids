@@ -1,8 +1,7 @@
-
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "../styles/childreport.css";
 import {
   BarChart,
   Bar,
@@ -57,6 +56,7 @@ const ChildResult = () => {
         const normalizedImages = response.data.images.map((image) => ({
           ...image,
           imgpath: `${BASE_URL}${image.imgpath.replace(/\\/g, "/")}`,
+          screenshotpath:`${BASE_URL}${image.screenshotpath.replace(/\\/g, "/")}`
         }));
         setReport({ ...response.data, images: normalizedImages });
         setLoading(false);
@@ -79,7 +79,7 @@ const ChildResult = () => {
     score: score.score,
   }));
 
-  // Calculate emotion percentages, ensuring all emotions are included
+  // Calculate emotion percentages
   const emotionCounts = report.images.reduce((acc, image) => {
     const dominantEmotion = image.max_emotion_img?.emotion;
     if (dominantEmotion) {
@@ -88,10 +88,10 @@ const ChildResult = () => {
     return acc;
   }, {});
 
-  const emotionPercentages = Object.entries(EMOJI_MAP).map(([emotion, emoji]) => ({
-    emotion: `${emoji} ${emotion}`, // Display emoji alongside emotion name
-    percentage: ((emotionCounts[emotion] || 0) / report.images.length) * 100, // Default to 0 if not present
-    rawEmotion: emotion, // For click handling
+  const emotionPercentages = Object.entries(emotionCounts).map(([emotion, count]) => ({
+    emotion: `${EMOJI_MAP[emotion] || "😶"} ${emotion}`,
+    percentage: ((count / report.images.length) * 100).toFixed(2),
+    rawEmotion: emotion,
   }));
 
   const handleEmotionClick = (emotion) => {
@@ -103,7 +103,7 @@ const ChildResult = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1>Child Report</h1>
       <p>
         <strong>Child Name:</strong> {childName}
@@ -161,7 +161,7 @@ const ChildResult = () => {
       <BarChart
         width={600}
         height={300}
-        data={emotionPercentages} // Pass the data with all emotions explicitly
+        data={emotionPercentages}
         onClick={(e) =>
           handleEmotionClick(e?.activePayload?.[0]?.payload?.rawEmotion)
         }
@@ -182,11 +182,9 @@ const ChildResult = () => {
             {selectedEmotion}
           </h3>
           {filteredImages.map((image, index) => {
-            const emotionData = Object.entries(EMOJI_MAP).map(([key, emoji]) => ({
-              name: `${emoji} ${key}`,
-              value: parseFloat(
-                (image.emotions[key] || 0).toFixed(2) // Ensure all emotions are included
-              ),
+            const emotionData = Object.entries(image.emotions).map(([key, value]) => ({
+              name: `${EMOJI_MAP[key] || ""} ${key}`,
+              value: parseFloat(value.toFixed(2)), // Use percentages from the API
             }));
 
             return (
@@ -209,21 +207,36 @@ const ChildResult = () => {
                   style={{
                     width: "150px",
                     height: "150px",
+                    objectFit:"cover",
+                    borderRadius: "8px",
+                  }}
+                />
+                <img
+                  src={image.screenshotpath}
+                  alt={`Analysis for ${image.screenshotpath}`}
+                  style={{
+                    width: "150px",
+                    height: "150px",
                     objectFit: "cover",
                     borderRadius: "8px",
                   }}
                 />
+
                 <div>
                   <p>
                     <strong>Image:</strong> {image.imgpath}
                   </p>
+                  <p>
+                    <strong>Screenshot:</strong> {image.screenshotpath}
+                  </p>
+
                   <p>
                     <strong>Dominant Emotion:</strong>{" "}
                     {EMOJI_MAP[selectedEmotion]} {selectedEmotion}
                   </p>
 
                   {/* Bar Chart for Individual Image Analysis */}
-                  <BarChart width={500} height={300} data={emotionData}>
+                  <BarChart width={400} height={300} data={emotionData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
