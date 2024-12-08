@@ -24,6 +24,7 @@ body {
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .admin-login-form h1 {
@@ -42,6 +43,9 @@ body {
     max-width: 400px;
 }
 
+
+/* Input Group Styling */
+
 .admin-login-form .input-group {
     width: 100%;
     margin-bottom: 20px;
@@ -53,6 +57,9 @@ body {
     margin-bottom: 8px;
     display: block;
 }
+
+
+/* Input Field Styling */
 
 .admin-login-form input {
     width: 100%;
@@ -70,6 +77,9 @@ body {
     box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
 }
 
+
+/* Button Styling */
+
 .admin-login-form button {
     width: 100%;
     background-color: #d32f2f;
@@ -81,6 +91,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
 }
 
 .admin-login-form button:hover {
@@ -116,4 +127,21 @@ body {
 .admin-login-form button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+
+/* Media Query for Responsive Design */
+
+@media (max-width: 600px) {
+    .admin-login-form {
+        padding: 20px 15px;
+    }
+    .admin-login-form h1 {
+        font-size: 1.8rem;
+    }
+    .admin-login-form input,
+    .admin-login-form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
 }

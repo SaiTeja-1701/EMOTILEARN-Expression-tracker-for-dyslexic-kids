@@ -1,33 +1,38 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar'; // Import Navbar component
-import Quiz from './Quiz';
-import AnimalGame from './AnimalGame';
-import MemoryGame from './MemoryGame';
-import Report from './Report';
-import ChildReport from './ChildReport';
-import ChildLogin from './ChildLogin';
-import AdminLogin from './AdminLogin';
-import LandingPage from './LandingPage'; // Import LandingPage
+import Navbar from './Navbar'; // Navbar component
+import Quiz from './Quiz'; // Quiz game
+import AnimalGame from './AnimalGame'; // Animal game
+import MemoryGame from './MemoryGame'; // Memory game
+import Report from './Report'; // Admin report
+import ChildReport from './ChildReport'; // Child report
+import ChildLogin from './ChildLogin'; // Child login
+import AdminLogin from './AdminLogin'; // Admin login
+import LandingPage from './LandingPage'; // Landing page
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/App.css';
 
 function App() {
-  const [gameStage, setGameStage] = useState('start');
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [childName, setChildName] = useState('');
-  const [sessionId, setSessionId] = useState('');
-  const [allSessions, setAllSessions] = useState([]);
+  // States for managing application data
+  const [gameStage, setGameStage] = useState('start'); // Game stage
+  const [isAdmin, setIsAdmin] = useState(false); // Admin login status
+  const [childName, setChildName] = useState(''); // Child's name
+  const [sessionId, setSessionId] = useState(''); // Current session ID
+  const [allSessions, setAllSessions] = useState([]); // All session data
 
+  // Handlers for login and game transitions
   const handleAdminLogin = () => setIsAdmin(true);
+
   const handleStartQuiz = (name, sid) => {
     setChildName(name);
     setSessionId(sid);
     setGameStage('quiz');
   };
 
-  const handleAddSession = (sessionData) => setAllSessions((prev) => [...prev, sessionData]);
+  const handleAddSession = (sessionData) =>
+    setAllSessions((prev) => [...prev, sessionData]);
 
+  // Function to post scores to the server
   const postScores = async (scores) => {
     try {
       const response = await fetch('http://localhost:3000/store-scores', {
@@ -38,7 +43,7 @@ function App() {
         body: JSON.stringify({
           childName,
           sessionId,
-          scores, // scores should be an array of objects with gameType and score
+          scores, // Scores should be an array of objects with gameType and score
         }),
       });
 
@@ -53,12 +58,13 @@ function App() {
     }
   };
 
+  // Render functions for each game
   const renderQuiz = () => (
     <Quiz
       onQuizEnd={(score, expressionTally) => {
         handleAddSession({ childName, sessionId, quizScore: score, expressionTally });
         postScores([{ gameType: 'Quiz Game', score }]);
-        setGameStage('animalGame');
+        setGameStage('AnimalGame');
       }}
       childName={childName}
       sessionId={sessionId}
@@ -67,7 +73,7 @@ function App() {
 
   const renderAnimalGame = () => (
     <AnimalGame
-      onFinish={(score) => {
+      onanimal={(score) => {
         setAllSessions((prev) =>
           prev.map((session) =>
             session.sessionId === sessionId ? { ...session, animalGameScore: score } : session
@@ -89,8 +95,8 @@ function App() {
             session.sessionId === sessionId ? { ...session, memoryGameScore: score } : session
           )
         );
-        setGameStage('start');
         postScores([{ gameType: 'Memory Game', score }]);
+        setGameStage('start');
       }}
       childName={childName}
       sessionId={sessionId}
@@ -100,7 +106,8 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar /> {/* Add Navbar here */}
+        {/* Conditionally render Navbar */}
+        {gameStage === 'start' && <Navbar />} {/* Navbar is visible only when gameStage is 'start' */}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/child-login" element={<ChildLogin onStartQuiz={handleStartQuiz} />} />
@@ -114,6 +121,7 @@ function App() {
       </div>
     </Router>
   );
+  
 }
 
 export default App;

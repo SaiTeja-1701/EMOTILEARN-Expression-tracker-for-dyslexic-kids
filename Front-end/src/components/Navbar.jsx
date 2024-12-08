@@ -5,7 +5,7 @@ import '../styles/Navbar.css';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">MyApp</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,7 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/admin-login">Admin Login</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/report">All Reports</Link>
-            </li>
+            
           </ul>
         </div>
       </div>

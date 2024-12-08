@@ -7,93 +7,110 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-}
-
-
-/* Child Login Styling */
-
-.child-login {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f8ff;
+    color: #333;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+
+/* Container for the login screen */
+
+.start-screen {
     background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.child-login h1 {
-    font-size: 2rem;
-    color: #00796b;
-    margin-bottom: 20px;
-}
-
-.child-login form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
     max-width: 400px;
-}
-
-.child-login label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.child-login input {
     width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin: 20px;
+}
+
+
+/* Heading style */
+
+h1 {
+    font-size: 2rem;
+    color: #4e79a7;
     margin-bottom: 20px;
-    outline: none;
+    font-weight: bold;
 }
 
-.child-login input:focus {
-    border-color: #00796b;
-    box-shadow: 0px 0px 4px rgba(0, 121, 107, 0.3);
-}
 
-.child-login button {
-    background-color: #00796b;
-    color: white;
-    padding: 10px 20px;
+/* Label for the input field */
+
+label {
+    display: block;
     font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.child-login button:hover {
-    background-color: #005f54;
-}
-
-.child-login button:active {
-    transform: scale(0.98);
+    color: #555;
+    margin-bottom: 8px;
+    text-align: left;
+    margin-left: 10px;
 }
 
 
-/* Admin Login Navigation Button */
+/* Input field style */
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    /* Margin between input and submit button */
+    border: 2px solid #4e79a7;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+
+/* Focus state for input */
+
+input:focus {
+    border-color: #00796b;
+}
+
+
+/* Button style */
 
 .submit-button {
     width: 100%;
     padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background-color: #4caf50;
+    background-color: #4e79a7;
     color: white;
-    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
     margin-top: 10px;
+    /* Adds gap between the input and the submit button */
 }
+
+
+/* Button hover effect */
 
 .submit-button:hover {
     background-color: #388e3c;
+}
+
+
+/* Media Query for Responsive Design */
+
+@media (max-width: 600px) {
+    .start-screen {
+        padding: 30px 20px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    input,
+    .submit-button {
+        font-size: 1rem;
+        padding: 10px;
+    }
 }

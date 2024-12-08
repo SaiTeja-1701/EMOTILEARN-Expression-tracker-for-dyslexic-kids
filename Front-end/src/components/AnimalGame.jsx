@@ -16,7 +16,7 @@ const animals = [
 
 const getRandomAnimal = () => animals[Math.floor(Math.random() * animals.length)];
 
-function AnimalGame({ onFinish, childName, sessionId }) {
+function AnimalGame({ onanimal, childName, sessionId }) {
   const navigate = useNavigate();
   const [currentAnimal, setCurrentAnimal] = useState(getRandomAnimal());
   const [letters, setLetters] = useState([]);
@@ -84,7 +84,7 @@ function AnimalGame({ onFinish, childName, sessionId }) {
           setCurrentLetterIndex((prevIndex) => prevIndex + 1);
 
           if (currentLetterIndex + 1 === currentAnimal.name.length) {
-            sendScoreToBackend();
+            sendScoreToBackend(); // This function is called only once, when the game ends
             setGameOver(true);
           }
         }
@@ -102,23 +102,19 @@ function AnimalGame({ onFinish, childName, sessionId }) {
   };
 
   const sendScoreToBackend = () => {
-    fetch('http://localhost:3000/submit-score', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ score, childName, sessionId, gameId }),
-    }).then(() => {
-      navigate('/memory-game');
-    });
+    // Define your logic to send the score to the backend
+    onanimal(score);
+    console.log('Score sent to backend:', score);
   };
 
   return (
     <div className="game-container">
-      <Capturing 
-        childName={childName} 
-        sessionId={sessionId} 
-        gameId={gameId} 
-        captureInterval={4000} 
-        screenshotInterval={4000} 
+      <Capturing
+        childName={childName}
+        sessionId={sessionId}
+        gameId={gameId}
+        captureInterval={4000}
+        screenshotInterval={4000}
         uploadUrl="http://localhost:3000/photos"
       />
       <h1>Animal Letter Game</h1>
@@ -131,7 +127,7 @@ function AnimalGame({ onFinish, childName, sessionId }) {
         ))}
       </h2>
       {gameOver ? (
-        <button onClick={() => onFinish(score)}>Finish Game</button>
+        <button onClick={() => navigate('/memory-game')}>Next Game</button>
       ) : (
         <div className="game-area">
           <div className="animal" style={{ left: position.x, top: position.y }}>

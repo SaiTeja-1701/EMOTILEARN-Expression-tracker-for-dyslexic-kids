@@ -50,6 +50,7 @@ const ChildLogin = ({ onStartQuiz }) => {
           onChange={(e) => setChildName(e.target.value)}
           required
         />
+        <br />
         <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
